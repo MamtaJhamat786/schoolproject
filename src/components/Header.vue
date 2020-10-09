@@ -7,7 +7,10 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
+        <b-nav-item to="/Home">Home</b-nav-item>
         <b-nav-item to="/About">About</b-nav-item>
+        <b-nav-item to="/Login">Login</b-nav-item>
+        <b-nav-item to="/Signup">Signup</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
