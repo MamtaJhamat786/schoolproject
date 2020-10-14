@@ -1,18 +1,45 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+   <b-container>
+      <b-card-group columns>
+         <div v-for="(data, index) in loadedData" :key="index">
+        <b-card 
+      :title="data.name"> 
+      <b-card-text >  Expert In 
+        <div>
+        <ul v-for="(options, index) in data.selected" :key="index">
+        <li > {{ options }}</li>
+        </ul>
+        </div>
+      </b-card-text>
+          <b-button>More Info</b-button>
+       </b-card>
+          </div> 
+      
+      </b-card-group>
+      </b-container>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import axios from 'axios'
 export default {
+  beforeCreate: function() {
+        document.body.className = 'intro';
+    },
   name: 'Home',
-  components: {
-    HelloWorld
+  data() {
+    return {
+        loadedData: []
+    }
+  },
+  created() {
+    axios.get('https://schoolproject-3bb31.firebaseio.com/user.json')
+    .then(result => this.loadedData = result.data)
+      .catch( e =>console.log(e))
+    console.log(this.loadedData)
+    }
   }
-}
+
 </script>

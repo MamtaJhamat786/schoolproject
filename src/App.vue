@@ -10,6 +10,9 @@
 import Header from '@/components/Header.vue'
 
 export default {
+  beforeCreate: function() {
+        document.body.className = 'intro';
+    },
   components: {
     Header
   }
@@ -17,12 +20,17 @@ export default {
 </script>
 
 <style lang="scss">
+ body.about {
+    background: rgb(125, 161, 150);
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+
 }
 
 #nav {
