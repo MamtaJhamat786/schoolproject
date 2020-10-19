@@ -4,15 +4,15 @@
    <b-container>
       <b-card-group columns>
          <div v-for="(data, index) in loadedData" :key="index">
-        <b-card 
+        <b-card class="calass"
       :title="data.name"> 
-      <b-card-text >  Expert In 
-        <div>
-        <ul v-for="(options, index) in data.selected" :key="index">
-        <li > {{ options }}</li>
+      <div class="d-flex justify-content-center">
+      <b-card-text class="text-center mb-" >  Expert In :
+        <ul class=" d-flex align-content-center mt-3" v-for="(options, index) in data.selected" :key="index">
+        <li> {{ options }}</li>
         </ul>
-        </div>
       </b-card-text>
+      </div>
           <b-button>More Info</b-button>
        </b-card>
           </div> 
@@ -43,3 +43,7 @@ export default {
   }
 
 </script>
+
+<style lang="scss" scoped>
+
+</style>
