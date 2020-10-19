@@ -3,17 +3,17 @@
     <img alt="Vue logo" src="../assets/logo.png">
    <b-container>
       <b-card-group columns>
-         <div v-for="(data, index) in loadedData" :key="index">
-        <b-card class="calass"
+         <div v-for="(data, index, idx) in loadedData" :key="index">
+        <b-card
       :title="data.name"> 
       <div class="d-flex justify-content-center">
-      <b-card-text class="text-center mb-" >  Expert In :
+      <b-card-text class="text-center" >  Expert In :
         <ul class=" d-flex align-content-center mt-3" v-for="(options, index) in data.selected" :key="index">
         <li> {{ options }}</li>
         </ul>
       </b-card-text>
       </div>
-          <b-button>More Info</b-button>
+          <b-button @click="openDetail(idx)" >More Info</b-button>
        </b-card>
           </div> 
       
@@ -34,11 +34,18 @@ export default {
         loadedData: []
     }
   },
+  methods: {
+      openDetail(index) {
+        this.$store.state.index = index
+          this.$router.push("/detailed");
+          
+          
+      }
+  },
   created() {
     axios.get('https://schoolproject-3bb31.firebaseio.com/user.json')
     .then(result => this.loadedData = result.data)
       .catch( e =>console.log(e))
-    console.log(this.loadedData)
     }
   }
 

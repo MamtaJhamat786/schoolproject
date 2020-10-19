@@ -104,7 +104,7 @@ export default {
         password: "",
         homeAddress: "",
         telephoneNumber: "",
-        status: "not_accepted",
+        status: "",
         selected: [],
       },
       options: [
@@ -125,7 +125,8 @@ export default {
       };
       console.log(formData);
       this.dismissCountDown = this.dismissSecs;
-      axios.post('https://schoolproject-3bb31.firebaseio.com/user.json', this.form)
+        if  (this.form.status === 'accepted'){
+          axios.post('https://schoolproject-3bb31.firebaseio.com/user.json', this.form)
       .then((result) => {
           console.log(result);
         })
@@ -140,6 +141,8 @@ export default {
             console.log("Error", error.message);
           }
         });
+        }
+      
       axios
         .post(
           "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBxTI8XNy5pqtKv2x5a3CRnGVPCy3Ozw4o",

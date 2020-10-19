@@ -1,5 +1,5 @@
 <template>
-  <div :style="myStyle" id="about">
+  <div id="about">
     <b-container>
       <h1>Wecome to Beauty Expert</h1>
       <br />
