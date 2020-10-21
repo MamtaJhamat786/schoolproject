@@ -71,8 +71,8 @@
               id="checkbox-1"
               v-model="form.status"
               name="checkbox-1"
-              value="accepted"
-              unchecked-value="not_accepted">
+              value="true"
+              unchecked-value="false">
               I am a beauty expert and i want to upload my data so that clients can approach me.
             </b-form-checkbox>
             </b-input-group>
@@ -87,7 +87,7 @@
 </template>
 
 <script>
-import axios from "axios";
+
 
 export default {
   beforeCreate: function() {
@@ -122,50 +122,16 @@ export default {
       const formData = {
         email: this.form.email,
         password: this.form.password,
+        name: this.form.name,
+        homeAddress: this.form.homeAddress,
+        telephoneNumber: this.form.telephoneNumber,
+        status: this.form.status,
+        selected: this.form.selected
       };
       console.log(formData);
       this.dismissCountDown = this.dismissSecs;
-        if  (this.form.status === 'accepted'){
-          axios.post('https://schoolproject-3bb31.firebaseio.com/user.json', this.form)
-      .then((result) => {
-          console.log(result);
-        })
-        .catch((error) => {
-          if (error.response) {
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
-            console.log(error.response.data);
-          } else if (error.request) {
-            console.log(error.request);
-          } else {
-            console.log("Error", error.message);
-          }
-        });
-        }
       
-      axios
-        .post(
-          "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBxTI8XNy5pqtKv2x5a3CRnGVPCy3Ozw4o",
-          {
-            email: formData.email,
-            password: formData.password,
-            returnSecureToken: true,
-          }
-        )
-        .then((result) => {
-          console.log(result);
-        })
-        .catch((error) => {
-          if (error.response) {
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
-            console.log(error.response.data);
-          } else if (error.request) {
-            console.log(error.request);
-          } else {
-            console.log("Error", error.message);
-          }
-        });
+      this.$store.dispatch('signup', formData)
       setTimeout(() => {
         this.$router.push("/");
       }, 3000);

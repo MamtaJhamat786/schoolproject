@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+
 export default {
   beforeCreate: function() {
         document.body.className = 'intro';
@@ -43,16 +43,7 @@ export default {
         password: this.password
       }
       console.log(formData)
-         axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBxTI8XNy5pqtKv2x5a3CRnGVPCy3Ozw4o',
-         {
-           email: formData.email,
-           password: formData.password,
-           returnSecureToken: true
-    
-         }).then(result =>{ 
-           console.log(result)
-           })
-      .catch( e =>console.log(e))
+         this.$store.dispatch('login', {email: formData.email, password: formData.password})
     }
   }
 }

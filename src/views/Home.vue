@@ -13,7 +13,7 @@
         </ul>
       </b-card-text>
       </div>
-          <b-button @click="openDetail(idx)" >More Info</b-button>
+          <b-button to="/detailed" @click="openDetail(idx)" >More Info</b-button>
        </b-card>
           </div> 
       
@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
   beforeCreate: function() {
         document.body.className = 'intro';
@@ -31,24 +30,24 @@ export default {
   name: 'Home',
   data() {
     return {
-        loadedData: []
+      
     }
   },
   methods: {
       openDetail(index) {
         this.$store.state.index = index
-          this.$router.push("/detailed");
-          
-          
+        this.$store.dispatch('singleView')
       }
   },
-  created() {
-    axios.get('https://schoolproject-3bb31.firebaseio.com/user.json')
-    .then(result => this.loadedData = result.data)
-      .catch( e =>console.log(e))
+  computed: {
+    loadedData() {
+      return this.$store.getters.data
     }
+  },
+  created() {
+    this.$store.dispatch('fetchData')
   }
-
+}
 </script>
 
 <style lang="scss" scoped>

@@ -7,6 +7,7 @@
 <h6 class="mt-3">{{ loadedData.email }}</h6>
 <h6 class="mt-3">{{ loadedData.homeAddress }}</h6>
 <h6 class="mt-3">{{ loadedData.telephoneNumber }}</h6>
+<h6>{{ loadedData.password }}</h6>
     
      <h6 class="mt-3">Expert in :</h6>
       <div class="d-inline-flex justify-content-center flex-column">  
@@ -24,29 +25,23 @@
 </template>
 
 <script>
-import axios from 'axios'
+
 export default {
+  beforeCreate: function() {
+        document.body.className = 'intro';
+    },
 name: 'Detailed',
 data(){
     return {
-        loadedData: []
+       
     }
 },
-created() {
-    axios.get('https://schoolproject-3bb31.firebaseio.com/user.json')
-    .then(result =>{
-         const data = result.data
-        const users = []
-        for (let key in data) {
-            const user = data[key]
-            user.id = key
-            users.push(user)
-
-        }
-        this.loadedData = users[this.$store.state.index]
-    })
-      .catch( e =>console.log(e))
+computed: {
+    loadedData() {
+      return this.$store.getters.single
     }
+  },
+      
 }
 </script>
 

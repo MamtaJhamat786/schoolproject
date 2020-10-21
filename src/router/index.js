@@ -4,7 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Signup from '../views/Signup.vue'
 import Detailed from '../views/Detailed.vue'
-
+import store from '../store/index.js'
 Vue.use(VueRouter)
 
 const routes = [
@@ -26,7 +26,14 @@ const routes = [
   {
     path: '/detailed',
     name: 'detailed',
-    component: Detailed
+    component: Detailed,
+    beforeEnter(to, from, next) {
+      if (store.state.idToken) {
+        next()
+      }else{
+        next('/login')
+      }
+    }
   },
   {
     path: '/about',
