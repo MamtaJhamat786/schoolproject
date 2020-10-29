@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import Vuelidate from 'vuelidate'
 import router from '../router'
+
 Vue.use(Vuex)
+Vue.use(Vuelidate)
 
 export default new Vuex.Store({
   state: {
@@ -10,7 +13,8 @@ export default new Vuex.Store({
     idToken: null,
     userId: null,
     loadedData: [],
-    singleDetail: []
+    singleDetail: [],
+    error: null
 
   },
   mutations: {
@@ -27,8 +31,10 @@ export default new Vuex.Store({
     clearToken (state) {
       state.idToken = null,
       state.userId = null
+    },
+    loginError (state, payload) {
+      state.error = payload
     }
-    
   },
   actions: {
     signup({commit}, authData) {
@@ -92,9 +98,14 @@ export default new Vuex.Store({
           token: result.data.idToken,
           userId: result.data.localId
       })
+      this.state.error = null
+      router.replace('/')
         })
-   .catch( e =>console.log(e))
-   router.replace('/')
+   .catch( error => {
+     commit('loginError', {
+     error: error.response.data.error
+  })
+})
     },
     fetchData({commit}) {
       axios.get('https://schoolproject-3bb31.firebaseio.com/user.json')
@@ -123,6 +134,9 @@ export default new Vuex.Store({
     },
     isAuth(state) {
       return state.idToken !== null
+    },
+    error(state) {
+      return state.error !== null
     }
   }
 

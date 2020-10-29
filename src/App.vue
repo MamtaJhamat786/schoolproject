@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header></Header>
-    <router-view class="mt-3"/>
+    <router-view />
   </div>
 </template>
 
@@ -21,8 +21,10 @@ export default {
 
 <style lang="scss">
  body.about {
-    background: rgb(125, 161, 150);
+    background: rgb(170, 186, 206)
 }
+
+
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -33,16 +35,4 @@ export default {
 
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+  <div class="home pt-3 pb-4" >
+    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
    <b-container>
       <b-card-group columns>
          <div v-for="(data, index, idx) in loadedData" :key="index">
@@ -13,7 +13,7 @@
         </ul>
       </b-card-text>
       </div>
-          <b-button to="/detailed" @click="openDetail(idx)" >More Info</b-button>
+          <b-button to="/detailed" @click="openDetail(idx)" class="btnn" >More Info</b-button>
        </b-card>
           </div> 
       
@@ -51,5 +51,36 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap');
 
+.home {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/62/Starsinthesky.jpg');
+}
+
+p {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.4rem;
+}
+h4 {
+  font-family: 'Henny Penny', cursive;
+  font-size: 2rem;
+}
+.btnn{
+  border: none !important;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+}
+.card-body{
+  background-color: rgb(190, 194, 214) !important;
+    border: 3px solid rgb(190, 194, 214) !important;
+  border-radius: 1rem !important;
+  
+}
+.card{
+    background-color: rgb(190, 194, 214) !important;
+  border: 3px solid rgb(190, 194, 214) !important;
+  border-radius: 1rem !important;
+}
 </style>
