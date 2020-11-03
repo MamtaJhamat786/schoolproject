@@ -26,8 +26,9 @@
 <script>
 
 export default {
-  beforeCreate: function() {
-        document.body.className = 'intro';
+  name: 'Login',
+    beforeCreate: function() {
+        document.body.className = 'about';
     },
   data() {
     return{

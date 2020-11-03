@@ -40,6 +40,9 @@ data()  {
     return {
        images: [
               'https://www.fabmood.com/inspiration/wp-content/uploads/2019/12/winter-nails-40.jpg',
+              'https://i.pinimg.com/474x/7a/ae/98/7aae981dbe834127d840ad2f3b7ea24c.jpg',
+              'https://i.pinimg.com/originals/c9/28/81/c92881fb4c4220d2c6c2212261a699ac.jpg',
+              'https://lh3.googleusercontent.com/proxy/gV9ljAvxgVPFSKTCaPQG_yI4cOePjxwnRMOI0fo3t398KzERkN_GyiOxMvBKq4rI6UStJFr5Qh9zM7PfJ9NeNa3zPtzI2uCMxVgUjZD9eR2Uel9OmRxCN-o',
               image,
               'https://i.pinimg.com/originals/16/b4/0b/16b40bcb68dacf94c2f9e8ce809ff702.png'
            ],

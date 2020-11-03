@@ -97,8 +97,9 @@
 import{required, email, minLength} from 'vuelidate/lib/validators'
 
 export default {
-  beforeCreate: function() {
-        document.body.className = 'intro';
+ name: 'Signup',
+    beforeCreate: function() {
+        document.body.className = 'about';
     },
   data() {
 
